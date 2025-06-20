@@ -49,15 +49,25 @@
 public class Card {
 
 	/*** CONSTANT VARIABLES ***/
-
+	public static final char CLUB = '♣';
+	public static final char SPADE = '♠';
+	public static final char DIAMOND = '♦';
+	public static final char HEART = '♥';
+	public static final char defaultS = HEART;
+	public static final int defaultVal = 1;
 
 	/*** INSTANCE VARIABLES ***/
-
+	private char suit;
+	private int val;
 
 	/*** CONSTRUCTOR METHODS ***/
 	/**
 	 * Default constructor, builds default card object as: A ♥
 	 */
+	public Card() {
+		suit = defaultS;
+		val = defaultVal;
+	}
 
 
 	/**
@@ -69,7 +79,15 @@ public class Card {
 	 * @param suit  one of four suit values (unicode value for heart, diamond,
 	 *              spade, or club)
 	 */
-
+	public Card(int val, char suit) {
+		boolean suitBool = (suit == CLUB || suit == SPADE || suit == DIAMOND || suit == HEART);
+		if (val >= 1 && val <= 13 && suitBool) {
+			this.suit = suit;
+			this.val = val;
+		} else {
+			System.exit(1);
+		}
+	}
 
 	/**
 	 * Copy constructor builds object with all data from Card object provided. No
@@ -77,6 +95,10 @@ public class Card {
 	 *
 	 * @param original Card object to be copied
 	 */
+	public Card(Card c) {
+		this.suit = c.suit;
+		this.val = c.val;
+	}
 
 
 	/*** MUTATOR METHODS (SETTERS) ***/
@@ -116,6 +138,34 @@ public class Card {
 	 *
 	 * @return true if card suit AND value are valid, false otherwise
 	 */
+	public boolean setVal(int val) {
+		if (val >= 1 && val <= 13) {
+			this.val = val;
+			return true;
+		}
+		return false;
+	}
+
+	public boolean setSuit(char suit) {
+
+		boolean suitBool = (suit == CLUB || suit == SPADE || suit == DIAMOND || suit == HEART);
+		if (suitBool) {
+			this.suit = suit;
+			return true;
+		}
+		return false;
+	}
+
+	public boolean setBoth(int val, char suit) {
+		boolean suitBool = (suit == CLUB || suit == SPADE || suit == DIAMOND || suit == HEART);
+		boolean valBool = val >= 1 && val <= 13;
+		if (valBool && suitBool) {
+			this.val = val;
+			this.suit = suit;
+			return true;
+		}
+		return false;
+	}
 
 
 	/*** ACCESSOR METHODS (GETTERS) ***/
@@ -149,7 +199,27 @@ public class Card {
 	 *
 	 * @return String containing ASCII art with card suit and card print value
 	 */
+	public int getVal() {
+		return val;
+	}
 
+	public char getSuit() {
+		return suit;
+	}
+
+	public String cardVal() {
+		if (val == 1) {
+			return "A";
+		} else if (val == 11) {
+			return "J";
+		} else if (val == 12) {
+			return "Q";
+		} else if (val == 13) {
+			return "K";
+		}
+
+		return ("" + val);
+	}
 
 	/*** OTHER REQUIRED METHODS ***/
 	/**
@@ -176,6 +246,29 @@ public class Card {
 	 * Prints card ASCII art to console (see {@link #getPrintCard()})
 	 */
 
+	public void printC() {
+		String cPrint = ("+-------+\n" +
+				"| " + cardVal() + "	 |\n" +
+				"|   " + suit + "	 |\n" +
+				"|     " + cardVal() + "	 |\n");
+		System.out.println(cPrint);
+	}
 
+	public String getPrintCard() {
 
+		String cPrint = ("+-------+\n" +
+				"| " + cardVal() + "	 |\n" +
+				"|   " + suit + "	 |\n" +
+				"|     " + cardVal() + "	 |\n");
+
+		return (cPrint);
+	}
+
+	public boolean equals(Card c) {
+		return this.val == c.val && (this.suit == c.suit);
+	}
+
+	public String toString() {
+		return ("[" + cardVal() + " " + suit + "]");
+	}
 }
