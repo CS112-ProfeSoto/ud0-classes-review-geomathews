@@ -37,10 +37,10 @@ public class Main {
 		}
 
 		for (int index = 0; index < deck.length; index++) {
-			System.out.println(deck[index].getPrintValue() + " " + deck[index].getSuit() + " ");
+			System.out.print(deck[index].getPrintValue() + " " + deck[index].getSuit() + " ");
 			int next = (index + 1) % 13;
 			if (next == 0) {
-				System.out.print("");
+				System.out.print("\n");
 			}
 
 		}
