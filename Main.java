@@ -36,11 +36,11 @@ public class Main {
 			}
 		}
 
-		for (int i = 0; i < deck.length; i++) {
-			System.out.println(deck[i].cardVal() + " " + deck[i].getSuit() + " ");
-			int next = (i + 1) % 13;
+		for (int index = 0; index < deck.length; index++) {
+			System.out.println(deck[index].getPrintValue() + " " + deck[index].getSuit() + " ");
+			int next = (index + 1) % 13;
 			if (next == 0) {
-				System.out.print();
+				System.out.print("");
 			}
 
 		}
