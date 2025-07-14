@@ -2,8 +2,8 @@
  * Driver program that creates standard 52-card deck (as Card array)
  * and prints out each card in deck.
  *
- * @author ???
- * @version ???
+ * @author George Mathews
+ * @version 2.0
  */
 
 public class Main {

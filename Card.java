@@ -85,6 +85,7 @@ public class Card {
 			this.suit = suit;
 			this.value = value;
 		} else {
+			System.out.println("Error: Invalid Input");
 			System.exit(1);
 		}
 	}
@@ -96,6 +97,10 @@ public class Card {
 	 * @param original Card object to be copied
 	 */
 	public Card(Card c) {
+		if (c == null) {
+			System.out.println("Error: Null Value");
+			System.exit(1);
+		}
 		this.suit = c.suit;
 		this.value = c.value;
 	}
