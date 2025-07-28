@@ -3,7 +3,7 @@
  * and prints out each card in deck.
  *
  * @author George Mathews
- * @version 2.0
+ * @version 3.0
  */
 
 public class Main {

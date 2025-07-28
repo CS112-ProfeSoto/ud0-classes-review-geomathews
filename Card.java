@@ -12,8 +12,8 @@
  * constant variables will be used throughout code for consistency
  * - Whenever value/suit is changed, it must be within the valid values
  *
- * @author ???
- * @version ???
+ * @author George Mathews
+ * @version 3.0
  */
 
 /*
